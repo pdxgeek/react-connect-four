@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { AppDefaultState } from "../contexts/AppDefaultState";
-import { AppContext } from "../contexts/AppContext";
+import { AppDefaultState } from "../context/AppDefaultState";
+import { AppContext } from "../context/AppContext";
 import ApplicationWrapper from "./ApplicationWrapper";
 
 const App: React.FC = () => {

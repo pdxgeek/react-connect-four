@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../context/AppContext";
 import gameActions from "../gamelogic/GameActions";
 
 interface IDropSquareProps {

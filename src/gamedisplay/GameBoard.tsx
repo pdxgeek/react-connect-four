@@ -1,7 +1,7 @@
 import React from "react";
 
 import GameRow from "./GameRow";
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../context/AppContext";
 
 const GameBoard: React.FC = () => {
     const { appState } = useAppContext();

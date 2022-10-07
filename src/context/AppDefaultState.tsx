@@ -1,4 +1,3 @@
-import React from "react";
 import { GamePiece } from "../gamelogic/GamePiece";
 import Player from "../gamelogic/Player";
 import uuid from "react-uuid";

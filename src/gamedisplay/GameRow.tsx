@@ -1,6 +1,6 @@
 import React from "react";
 import RowSpace from "./RowSpace";
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../context/AppContext";
 
 interface IGameRowProps {
     index: number

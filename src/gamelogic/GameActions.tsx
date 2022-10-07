@@ -1,6 +1,6 @@
 import Player from "./Player";
 import { GamePiece } from "./GamePiece";
-import { IAppState } from "../contexts/AppContext";
+import { IAppState } from "../context/AppContext";
 
 export interface IGameActions {
     dropPiece: (column: number, gamePiece: GamePiece) => void;
