@@ -12,8 +12,8 @@ const ApplicationWrapper: React.FC<any> = () => {
     const { currentPlayer } = GameActions(context)
 
     return (
-        <div>
-            <div className='h-full app-background-color'>
+        <div className='h-full'>
+            <div className='h-full grow app-background-color'>
                 <div className='flex gap-2'>
                     <div className='basis-[28%] shrink'/>
                     <div className='basis-[44%] p-5'>

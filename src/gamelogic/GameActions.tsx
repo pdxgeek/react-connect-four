@@ -5,6 +5,7 @@ import { IAppState } from "../contexts/AppContext";
 export interface IGameActions {
     dropPiece: (column: number, gamePiece: GamePiece) => void;
     currentPlayer: () => Player;
+    toggleDebug: () => void;
 }
 
 const GameActions = (context: IAppState): IGameActions => {
@@ -25,7 +26,11 @@ const GameActions = (context: IAppState): IGameActions => {
     }
 
     const advanceTurn = () => {
-        context.setAppState({...appState, turn: appState.turn + 1})
+        context.setAppState({...appState, turn: appState.turn + 1});
+    }
+
+    const toggleDebug = () => {
+        context.setAppState({...appState, debug: !appState.debug})
     }
 
     const dropPiece = (column: number, gamePiece: GamePiece) => {
@@ -47,7 +52,7 @@ const GameActions = (context: IAppState): IGameActions => {
         }
     }
 
-    return { dropPiece, currentPlayer };
+    return { toggleDebug, dropPiece, currentPlayer };
 }
 
 export default GameActions;

@@ -5,7 +5,7 @@ import GameActions from "../gamelogic/GameActions";
 
 const BottomBar: React.FC = () => {
     const { appState } = useAppContext();
-    const { currentPlayer } = GameActions(useAppContext());
+    const { currentPlayer, toggleDebug } = GameActions(useAppContext());
 
     return (
         <div className='flex flex-row bg-neutral-500 gap-5' onClick={() => {}}>
@@ -21,7 +21,7 @@ const BottomBar: React.FC = () => {
                 <span>{ appState.turn}</span>
             </div>
             <div>
-                <span className='app-standard-text'>Debug: </span>
+                <span className='app-standard-text' onClick={() => toggleDebug()}>Debug: </span>
                 <span>{appState.debug ? "true" : "false"}</span>
             </div>
         </div>
