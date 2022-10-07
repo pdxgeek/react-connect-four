@@ -4,10 +4,10 @@ interface IRowLabelProps {
     value: string
 }
 
-const RowLabel: React.FC<IRowLabelProps> = ({value}) => {
-    return(
+const RowLabel: React.FC<IRowLabelProps> = ({ value }) => {
+    return (
         <div>
-            <span className='text-white text-center justify-center'>{value}</span>
+            <span className='text-white text-center justify-center'>{ value }</span>
         </div>
     );
 }

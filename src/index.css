@@ -4,37 +4,37 @@
 
 @layer components {
 
-  .app-background-color {
-    @apply bg-blue-600
-  }
+    .app-background-color {
+        @apply bg-blue-600
+    }
 
-  .app-gamepiece-red {
-    @apply bg-gradient-radial from-red-800 via-red-800 to-black
-  }
+    .app-gamepiece-red {
+        @apply bg-gradient-radial from-red-800 via-red-800 to-black
+    }
 
-  .app-gamepiece-black {
-    @apply bg-gradient-radial from-neutral-700 via-neutral-700 to-black
-  }
+    .app-gamepiece-black {
+        @apply bg-gradient-radial from-neutral-700 via-neutral-700 to-black
+    }
 
-  .app-gamepiece-green {
-    @apply bg-gradient-radial from-green-800 via-green-800 to-black
-  }
+    .app-gamepiece-green {
+        @apply bg-gradient-radial from-green-800 via-green-800 to-black
+    }
 
-  .app-standard-text {
-    @apply text-black font-semibold font-mono;
-  }
+    .app-standard-text {
+        @apply text-black font-semibold font-mono;
+    }
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

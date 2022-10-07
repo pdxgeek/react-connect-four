@@ -4,16 +4,16 @@ import { AppContext } from "../contexts/AppContext";
 import ApplicationWrapper from "./ApplicationWrapper";
 
 const App: React.FC = () => {
-    const [appState, setAppState] = useState({...AppDefaultState});
+    const [appState, setAppState] = useState({ ...AppDefaultState });
     const appContextValue = useMemo(
         () => ({ appState, setAppState }),
         [appState, setAppState]
     );
 
     return (
-        <div className='flex flex-col h-screen'>
-            <AppContext.Provider value={appContextValue}>
-                    <ApplicationWrapper/>
+        <div className='flex flex-col h-screen app-background-color'>
+            <AppContext.Provider value={ appContextValue }>
+                <ApplicationWrapper/>
             </AppContext.Provider>
         </div>
     );

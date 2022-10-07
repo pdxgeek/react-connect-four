@@ -22,15 +22,15 @@ const GameActions = (context: IAppState): IGameActions => {
     const setPiece = (rowIndex: number, columnIndex: number, gamePiece: GamePiece) => {
         console.log("placing [" + gamePiece + "] at " + rowIndex + "-" + columnIndex);
         appState.gameBoard[rowIndex][columnIndex] = gamePiece;
-        context.setAppState({...appState, gameBoard: appState.gameBoard});
+        context.setAppState({ ...appState, gameBoard: appState.gameBoard });
     }
 
     const advanceTurn = () => {
-        context.setAppState({...appState, turn: appState.turn + 1});
+        context.setAppState({ ...appState, turn: appState.turn + 1 });
     }
 
     const toggleDebug = () => {
-        context.setAppState({...appState, debug: !appState.debug})
+        context.setAppState({ ...appState, debug: !appState.debug })
     }
 
     const dropPiece = (column: number, gamePiece: GamePiece) => {
@@ -38,7 +38,7 @@ const GameActions = (context: IAppState): IGameActions => {
         if (isOutOfBounds(column)) {
             console.log("Error.  ColumnIndex is out of bounds: " + column)
         } else {
-            for(let i = 0; i < appState.rowCount; i++) {
+            for (let i = 0; i < appState.rowCount; i++) {
                 const currentRow = appState.gameBoard[i]!;
                 if (currentRow[column] === GamePiece.empty) {
                     setPiece(i, column, gamePiece)

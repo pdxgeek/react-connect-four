@@ -28,25 +28,9 @@ export const AppDefaultState: IAppStateProps = {
     gameId: uuid(),
     turn: 1,
     debug: false,
-    gameBoard: Array.from({length: _rows}, () =>
-        Array.from({length: _columns}, () => GamePiece.empty)),
+    gameBoard: Array.from({ length: _rows }, () =>
+        Array.from({ length: _columns }, () => GamePiece.empty)),
 }
 
-//     const advanceTurn = () => {
-//         setTurn(turn + 1)
-//     }
-//
-//     const currentPlayer = () => {
-//         return players[(turn - 1) % players.length]
-//     }
-//
-//     const setPiece = (rowIndex: number, columnIndex: number, gamePiece: GamePiece) => {
-//         let boardCopy = gameBoard;
-//         boardCopy[rowIndex][columnIndex] = gamePiece;
-//         setGameBoard(boardCopy);
-//     }
-//
-//     return null;
-// }
 
 

@@ -12,8 +12,8 @@ const GameRow: React.FC<IGameRowProps> = ({ index }) => {
     return (
         <div className='flex bg-amber-500'> {
             Array.from({ length: appState.columnCount }, (_, i) =>
-                <RowSpace key={"rs" + i} rowIndex={ index } columnIndex={ i }/>)
-            }
+                <RowSpace key={ "rs" + i } rowIndex={ index } columnIndex={ i }/>)
+        }
         </div>
     )
 }

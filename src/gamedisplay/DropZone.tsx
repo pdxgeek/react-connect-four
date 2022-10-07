@@ -1,42 +1,18 @@
 import React from "react";
-import { GamePiece } from "../gamelogic/GamePiece";
 import { useAppContext } from "../contexts/AppContext";
-import gameActions from "../gamelogic/GameActions";
+import DropSquare from "./DropSquare";
 
-interface IDropZoneProps {
-    columnCount: number
-    gamePiece: GamePiece
-}
+const DropZone: React.FC = () => {
+    const context = useAppContext();
+    const appState = context.appState;
 
-interface IDropSquareProps {
-    index: number;
-    gamePiece: GamePiece;
-}
-
-const DropZone: React.FC<IDropZoneProps> = ({columnCount, gamePiece}) => {
     return (
         <div className='m-2'>
-            <div className='flex gap-2'>
-                {
-                    Array.from({length: columnCount},
-                        (_, i) => <DropSquare key={"ds" + i} index={i} gamePiece={gamePiece}/>
-                    )
-                }
+            <div className='flex gap-2'> {
+                Array.from({ length: appState.columnCount },
+                    (_, i) => <DropSquare key={ "ds" + i } index={ i }/>)
+            }
             </div>
-        </div>
-    );
-}
-
-const DropSquare: React.FC<IDropSquareProps> = ({index, gamePiece}) => {
-    const context = useAppContext();
-    const { dropPiece } = gameActions(context);
-
-    return (
-        <div className='group aspect-square grow m-[1px] p-[1%] '>
-            <div className={'hidden group-hover:block h-full rounded-full ' + gamePiece}
-            onClick={() => {
-                dropPiece(index, gamePiece);
-            }}/>
         </div>
     );
 }

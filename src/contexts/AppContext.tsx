@@ -6,13 +6,10 @@ export interface IAppState {
     setAppState: React.Dispatch<React.SetStateAction<IAppStateProps>>;
 }
 
-export interface IAppContextProvider {
-    children: React.ReactNode;
-}
-
 export const AppContext = createContext<IAppState>({
     appState: AppDefaultState,
-    setAppState: (): void => {}
+    setAppState: (): void => {
+    }
 });
 
 export const useAppContext = () => {
