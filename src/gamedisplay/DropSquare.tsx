@@ -18,7 +18,7 @@ const DropSquare: React.FC<IDropSquareProps> = ({ index }) => {
     };
 
     return (
-        <button className='group aspect-square grow m-[1px] p-[1%]'
+        <button className='group aspect-square grow m-[1px]'
              onClick={ () => { doClickSound(); dropPiece(index, currentPlayer().color); } }>
             <div className={ 'hidden group-hover:block h-full rounded-full ' + currentPlayer().color }/>
         </button>
