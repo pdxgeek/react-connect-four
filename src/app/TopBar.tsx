@@ -5,7 +5,7 @@ import GameActions from "../gamelogic/GameActions";
 
 const TopBar: React.FC = () => {
     const { appState } = useAppContext();
-    const { currentPlayer, toggleDebug } = GameActions(useAppContext());
+    const { currentPlayer, toggleDebug, toggleSound } = GameActions(useAppContext());
 
     return (
         <div className='w-full static bottom-0'>
@@ -25,6 +25,10 @@ const TopBar: React.FC = () => {
                 <div>
                     <span className='app-standard-text' onClick={ () => toggleDebug() }>Debug: </span>
                     <span>{ appState.debug ? "true" : "false" }</span>
+                </div>
+                <div>
+                    <span className='app-standard-text' onClick={ () => toggleSound() }>Sound: </span>
+                    <span>{ appState.sound ? "true" : "false" }</span>
                 </div>
             </div>
         </div>

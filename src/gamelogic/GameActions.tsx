@@ -6,6 +6,7 @@ export interface IGameActions {
     dropPiece: (column: number, gamePiece: GamePiece) => void;
     currentPlayer: () => Player;
     toggleDebug: () => void;
+    toggleSound: () => void;
 }
 
 const GameActions = (context: IAppState): IGameActions => {
@@ -33,6 +34,10 @@ const GameActions = (context: IAppState): IGameActions => {
         context.setAppState({ ...appState, debug: !appState.debug })
     }
 
+    const toggleSound = () => {
+        context.setAppState({ ...appState, sound: !appState.sound })
+    }
+
     const dropPiece = (column: number, gamePiece: GamePiece) => {
         let placed = false;
         if (isOutOfBounds(column)) {
@@ -52,7 +57,7 @@ const GameActions = (context: IAppState): IGameActions => {
         }
     }
 
-    return { toggleDebug, dropPiece, currentPlayer };
+    return { toggleSound, toggleDebug, dropPiece, currentPlayer };
 }
 
 export default GameActions;

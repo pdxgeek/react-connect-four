@@ -2,6 +2,7 @@ import React from "react";
 import { useAppContext } from "../context/AppContext";
 import DropSquare from "./DropSquare";
 
+
 const DropZone: React.FC = () => {
     const context = useAppContext();
     const appState = context.appState;

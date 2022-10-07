@@ -16,6 +16,7 @@ export interface IAppStateProps {
     players: Player[];
     turn: number;
     gameId: string;
+    sound: boolean;
     debug: boolean;
     gameBoard: GamePiece[][];
 }
@@ -26,6 +27,7 @@ export const AppDefaultState: IAppStateProps = {
     players: _players,
     gameId: uuid(),
     turn: 1,
+    sound: true,
     debug: false,
     gameBoard: Array.from({ length: _rows }, () =>
         Array.from({ length: _columns }, () => GamePiece.empty)),
