@@ -1,8 +1,7 @@
 import React from "react";
-import {GamePiece} from "../gamelogic/GamePiece";
+import { GamePiece } from "../gamelogic/GamePiece";
 import Player from "../gamelogic/Player";
 import uuid from "react-uuid";
-import GameActions, { IGameActions } from "../gamelogic/GameActions";
 
 const _rows = 6;
 const _columns = 7;

@@ -1,5 +1,5 @@
 import React from "react";
-import {GamePiece} from "../gamelogic/GamePiece";
+import { GamePiece } from "../gamelogic/GamePiece";
 import { useAppContext } from "../contexts/AppContext";
 import gameActions from "../gamelogic/GameActions";
 

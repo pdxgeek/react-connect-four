@@ -1,6 +1,5 @@
 import React from "react";
 import { useAppContext } from "../contexts/AppContext";
-import app from "../app/App";
 import GameActions from "../gamelogic/GameActions";
 // import { useGameContext } from "../contexts/GameActionContext";
 
