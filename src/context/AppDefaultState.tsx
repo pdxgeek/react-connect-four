@@ -5,8 +5,8 @@ import uuid from "react-uuid";
 const _rows = 6;
 const _columns = 7;
 const _players = [
-    new Player("player1", GamePiece.yellow),
-    new Player("player2", GamePiece.blue),
+    new Player("player1", GamePiece.red),
+    new Player("player2", GamePiece.green),
     // new Player("player3", GamePiece.green),
 ];
 

@@ -51,28 +51,28 @@ const WinDetection = (appState: IAppStateProps) => {
     }
 
     const upDown: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        console.log("checking up-down")
+        if (appState.debug) { console.log("checking up-down") }
         const positive = { r: (rowIndex + counter), c: columnIndex }
         const negative = { r: (rowIndex - counter), c: columnIndex }
         return { positive, negative }
     }
 
     const rightLeft: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        console.log("checking right-left")
+        if (appState.debug) { console.log("checking right-left") }
         const positive = { r: rowIndex, c: (columnIndex + counter) }
         const negative = { r: rowIndex, c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const diagonalUp: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        console.log("checking diagonal-up")
+        if (appState.debug) { console.log("checking diagonal-up") }
         const positive = { r: (rowIndex + counter), c: (columnIndex + counter) }
         const negative = { r: (rowIndex - counter), c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const diagonalDown: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        console.log("checking diagonal-down")
+        if (appState.debug) { console.log("checking diagonal-down") }
         const positive = { r: (rowIndex - counter), c: (columnIndex + counter) }
         const negative = { r: (rowIndex + counter), c: (columnIndex - counter) }
         return { positive, negative }
@@ -81,24 +81,23 @@ const WinDetection = (appState: IAppStateProps) => {
     const check = (checker: CheckFunction, rowIndex: number, columnIndex: number, color: GamePiece) => {
         let { positive, negative, counter } = { positive: true, negative: true, counter: 0 }
         const pieces: ICoordinates[] = [{ r: rowIndex, c: columnIndex }]
-        while((positive || negative) && counter < 20) {
+        while(positive || negative) {
             counter++;
-            const nextCoordinates = checker(rowIndex, columnIndex, counter);
-            console.log("checking [" + nextCoordinates.positive.c + " | " + nextCoordinates.positive.r + "]");
-            if (positive) {
-                if (checkPiece(nextCoordinates.positive, color)) {
-                    pieces.push(nextCoordinates.positive)
+            const next = checker(rowIndex, columnIndex, counter);
+
+            if (appState.debug) { console.log("checking [" + next.positive.r + " | " + next.positive.c + "]"); }
+
+            if (positive && (checkPiece(next.positive, color))) {
+                pieces.push(next.positive)
                 } else {
-                    positive = false;
-                }
+                positive = false;
             }
-            console.log("checking [" + nextCoordinates.negative.c + " | " + nextCoordinates.negative.r + "]");
-            if (negative) {
-                if (checkPiece(nextCoordinates.negative, color)) {
-                    pieces.push(nextCoordinates.negative)
-                } else {
-                    negative = false;
-                }
+            if (appState.debug) { console.log("checking [" + next.negative.r + " | " + next.negative.c + "]"); }
+
+            if (negative && (checkPiece(next.negative, color))) {
+                    pieces.push(next.negative)
+            } else {
+                negative = false;
             }
         }
         return { win: (pieces.length >= appState.winTarget), color, pieces }
