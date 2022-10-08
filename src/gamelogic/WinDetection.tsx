@@ -22,7 +22,7 @@ const WinDetection = (appState: IAppStateProps) => {
 
     const isOutOfBounds = (rowIndex: number, columnIndex: number) => {
         return rowIndex < 0
-            || rowIndex > appState.rowCount
+            || rowIndex >= appState.rowCount
             || columnIndex < 0
             || columnIndex >= appState.columnCount;
     }
@@ -36,7 +36,7 @@ const WinDetection = (appState: IAppStateProps) => {
         console.log("before checkwins")
         const checks: IWinStatus[] = [
             check(upDown, rowIndex, columnIndex, piece),
-            check(leftRight, rowIndex, columnIndex, piece),
+            check(rightLeft, rowIndex, columnIndex, piece),
             check(diagonalUp, rowIndex, columnIndex, piece),
             check(diagonalDown, rowIndex, columnIndex, piece)
         ]
@@ -51,31 +51,35 @@ const WinDetection = (appState: IAppStateProps) => {
     }
 
     const upDown: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
+        console.log("checking up-down")
         const positive = { r: (rowIndex + counter), c: columnIndex }
         const negative = { r: (rowIndex - counter), c: columnIndex }
         return { positive, negative }
     }
 
-    const leftRight: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
+    const rightLeft: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
+        console.log("checking right-left")
         const positive = { r: rowIndex, c: (columnIndex + counter) }
         const negative = { r: rowIndex, c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const diagonalUp: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
+        console.log("checking diagonal-up")
         const positive = { r: (rowIndex + counter), c: (columnIndex + counter) }
         const negative = { r: (rowIndex - counter), c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const diagonalDown: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
+        console.log("checking diagonal-down")
         const positive = { r: (rowIndex - counter), c: (columnIndex + counter) }
         const negative = { r: (rowIndex + counter), c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const check = (checker: CheckFunction, rowIndex: number, columnIndex: number, color: GamePiece) => {
-        let { positive, negative, counter } = { positive: true, negative: true, counter: 1 }
+        let { positive, negative, counter } = { positive: true, negative: true, counter: 0 }
         const pieces: ICoordinates[] = [{ r: rowIndex, c: columnIndex }]
         while((positive || negative) && counter < 20) {
             counter++;
@@ -97,7 +101,7 @@ const WinDetection = (appState: IAppStateProps) => {
                 }
             }
         }
-        return { win: (pieces.length >= appState.winTarget - 1), pieces }
+        return { win: (pieces.length >= appState.winTarget), pieces }
     }
 
     const checkPiece = (location: ICoordinates, color: GamePiece) => {
