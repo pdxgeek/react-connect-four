@@ -7,7 +7,8 @@ export interface IWinDetection {
 
 export interface IWinStatus {
     win: boolean
-    pieces?: ICoordinates[]
+    pieces: ICoordinates[]
+    color: GamePiece;
 }
 
 export interface ICoordinates {
@@ -33,17 +34,16 @@ const WinDetection = (appState: IAppStateProps) => {
             console.log("Error: Attempting to check for win on an empty space.")
         }
 
-        console.log("before checkwins")
         const checks: IWinStatus[] = [
             check(upDown, rowIndex, columnIndex, piece),
             check(leftRight, rowIndex, columnIndex, piece),
             check(diagonalUp, rowIndex, columnIndex, piece),
             check(diagonalDown, rowIndex, columnIndex, piece)
         ]
-        console.log("after checkwins")
 
         for (const condition of checks) {
             if (condition.win) {
+                console.log("Game Over! " + condition.color + " wins")
                 return condition;
             }
         }
@@ -77,27 +77,21 @@ const WinDetection = (appState: IAppStateProps) => {
     const check = (checker: CheckFunction, rowIndex: number, columnIndex: number, color: GamePiece) => {
         let { positive, negative, counter } = { positive: true, negative: true, counter: 1 }
         const pieces: ICoordinates[] = [{ r: rowIndex, c: columnIndex }]
-        while((positive || negative) && counter < 20) {
+        while (positive || negative) {
             counter++;
             const nextCoordinates = checker(rowIndex, columnIndex, counter);
-            console.log("checking [" + nextCoordinates.positive.c + " | " + nextCoordinates.positive.r + "]");
-            if (positive) {
-                if (checkPiece(nextCoordinates.positive, color)) {
-                    pieces.push(nextCoordinates.positive)
-                } else {
-                    positive = false;
-                }
+            if (positive && checkPiece(nextCoordinates.positive, color)) {
+                pieces.push(nextCoordinates.positive)
+            } else {
+                positive = false;
             }
-            console.log("checking [" + nextCoordinates.negative.c + " | " + nextCoordinates.negative.r + "]");
-            if (negative) {
-                if (checkPiece(nextCoordinates.negative, color)) {
-                    pieces.push(nextCoordinates.negative)
-                } else {
-                    negative = false;
-                }
+            if (negative && checkPiece(nextCoordinates.negative, color)) {
+                pieces.push(nextCoordinates.negative)
+            } else {
+                negative = false;
             }
         }
-        return { win: (pieces.length >= appState.winTarget - 1), pieces }
+        return { win: (pieces.length >= appState.winTarget - 1), color, pieces }
     }
 
     const checkPiece = (location: ICoordinates, color: GamePiece) => {

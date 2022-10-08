@@ -2,6 +2,7 @@ import Player from "./Player";
 import { GamePiece } from "./GamePiece";
 import { IAppState } from "../context/AppContext";
 import WinDetection from "./WinDetection";
+import { lastIndexOf } from "lodash";
 
 export interface IGameActions {
     dropPiece: (column: number, gamePiece: GamePiece) => boolean;
@@ -23,7 +24,7 @@ const GameActions = (context: IAppState): IGameActions => {
     }
 
     const setPiece = (rowIndex: number, columnIndex: number, gamePiece: GamePiece) => {
-        console.log("placing [" + gamePiece + "] at " + rowIndex + "-" + columnIndex);
+        console.log("placing " + gamePiece.substring(gamePiece.lastIndexOf("-") + 1) + " at " + rowIndex + "-" + columnIndex);
         appState.gameBoard[rowIndex][columnIndex] = gamePiece;
         context.setAppState({ ...appState, gameBoard: appState.gameBoard });
     }
@@ -46,7 +47,6 @@ const GameActions = (context: IAppState): IGameActions => {
     }
 
     const afterPlaced = (rowIndex: number, columnIndex: number) => {
-        console.log("After-placed");
         if (checkWinFrom(rowIndex, columnIndex).win) {
             gameOver();
         }  else {
