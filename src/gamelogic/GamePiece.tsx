@@ -1,6 +1,8 @@
 export enum GamePiece {
     empty = "app-background-color",
-    red = "app-gamepiece-red",
-    black = "app-gamepiece-black",
-    green = "app-gamepiece-green"
+    red = "gamepiece-red",
+    black = "gamepiece-black",
+    green = "gamepiece-green",
+    blue = "gamepiece-blue",
+    yellow = "gamepiece-yellow"
 }
