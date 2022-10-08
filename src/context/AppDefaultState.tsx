@@ -6,7 +6,7 @@ const _rows = 6;
 const _columns = 7;
 const _players = [
     new Player("player1", GamePiece.red),
-    new Player("player2", GamePiece.green),
+    new Player("player2", GamePiece.black),
     // new Player("player3", GamePiece.green),
 ];
 

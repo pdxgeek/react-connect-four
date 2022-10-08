@@ -1,30 +1,28 @@
 import React from "react";
-import Banner from "./Banner";
 import DropZone from "../gamedisplay/DropZone";
 import GameBoard from "../gamedisplay/GameBoard";
 
 const MainWindow: React.FC = () => {
     return (
-        <div className='flex flex-col h-full grow app-background-color'>
-            <div className='flex gap-2'>
-                <div className='basis-[28%] shrink'/>
-                <div className='basis-[44%] p-5'>
+        <div className='flex flex-row h-screen'>
 
-                    <Banner key="banner"
-                            heading='Connect&nbsp;4'
-                            subHeading='Another Stupid React Implementation'
-                    />
+            <div className='xs:w-0 lg:w-1/6 xl:w-3/12 '/>
 
-                    <div className='pt-8'>
+            <div className='grow app-background-color'>
+                <div className='p-5 m-20'>
+                    <div className='pt-2'>
                         <DropZone key="dropzone"/>
                     </div>
+
                     <div className='pt-2'>
                         <GameBoard key="gameboard"/>
                     </div>
                 </div>
-                <div className='basis-[28%] shrink'/>
             </div>
+
+            <div className='xs:w-0 lg:w-1/6 xl:w-3/12'/>
         </div>
+
     );
 }
 
