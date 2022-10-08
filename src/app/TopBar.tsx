@@ -23,6 +23,10 @@ const TopBar: React.FC = () => {
                     <span>{ appState.turn }</span>
                 </div>
                 <div>
+                    <span className='app-standard-text'>GameOver: </span>
+                    <span>{ appState.gameOver ? "true" : "false" }</span>
+                </div>
+                <div>
                     <span className='app-standard-text' onClick={ () => toggleDebug() }>Debug: </span>
                     <span>{ appState.debug ? "true" : "false" }</span>
                 </div>

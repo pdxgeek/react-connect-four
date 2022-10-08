@@ -1,9 +1,10 @@
 import Player from "./Player";
 import { GamePiece } from "./GamePiece";
 import { IAppState } from "../context/AppContext";
+import WinDetection from "./WinDetection";
 
 export interface IGameActions {
-    dropPiece: (column: number, gamePiece: GamePiece) => void;
+    dropPiece: (column: number, gamePiece: GamePiece) => boolean;
     currentPlayer: () => Player;
     toggleDebug: () => void;
     toggleSound: () => void;
@@ -11,6 +12,7 @@ export interface IGameActions {
 
 const GameActions = (context: IAppState): IGameActions => {
     const appState = context.appState;
+    const { checkWinFrom } = WinDetection(context.appState);
 
     const currentPlayer = (): Player => {
         return appState.players[(appState.turn - 1) % appState.players.length]
@@ -26,6 +28,11 @@ const GameActions = (context: IAppState): IGameActions => {
         context.setAppState({ ...appState, gameBoard: appState.gameBoard });
     }
 
+
+    const gameOver = () => {
+        context.setAppState({ ...appState, gameOver: true })
+    }
+
     const advanceTurn = () => {
         context.setAppState({ ...appState, turn: appState.turn + 1 });
     }
@@ -38,9 +45,20 @@ const GameActions = (context: IAppState): IGameActions => {
         context.setAppState({ ...appState, sound: !appState.sound })
     }
 
+    const afterPlaced = (rowIndex: number, columnIndex: number) => {
+        console.log("After-placed");
+        if (checkWinFrom(rowIndex, columnIndex).win) {
+            gameOver();
+        }  else {
+            advanceTurn();
+        }
+    }
+
     const dropPiece = (column: number, gamePiece: GamePiece) => {
         let placed = false;
-        if (isOutOfBounds(column)) {
+        if (appState.gameOver) {
+            console.log("Error. Game is over. " + column)
+        } else if (isOutOfBounds(column)) {
             console.log("Error.  ColumnIndex is out of bounds: " + column)
         } else {
             for (let i = 0; i < appState.rowCount; i++) {
@@ -48,13 +66,12 @@ const GameActions = (context: IAppState): IGameActions => {
                 if (currentRow[column] === GamePiece.empty) {
                     setPiece(i, column, gamePiece)
                     placed = true;
+                    afterPlaced(i, column)
                     break;
                 }
             }
         }
-        if (placed) {
-            advanceTurn();
-        }
+        return placed;
     }
 
     return { toggleSound, toggleDebug, dropPiece, currentPlayer };
