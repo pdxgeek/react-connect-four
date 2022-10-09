@@ -6,7 +6,7 @@ import Banner from "./Banner";
 const ApplicationWrapper: React.FC = () => {
     return (
         <div className='app-background-color'>
-            <div className='h-screen'>
+            <div className='flex flex-col h-full app-background-color'>
                 <Banner key="banner" heading='Connect&nbsp;4' subHeading='Another Stupid React Implementation' />
                 <TopBar key="appinfobar"/>
                 <MainWindow/>
