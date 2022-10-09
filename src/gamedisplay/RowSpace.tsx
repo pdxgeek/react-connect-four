@@ -1,6 +1,6 @@
 import React from "react";
 import RowLabel from "./RowLabel";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../context/AppContextProvider";
 
 interface IRowSpaceProps {
     rowIndex: number;

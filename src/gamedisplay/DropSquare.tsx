@@ -1,7 +1,6 @@
 import React from "react";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../context/AppContextProvider";
 import gameActions from "../gamelogic/GameActions";
-import RowLabel from "./RowLabel";
 
 interface IDropSquareProps {
     index: number;

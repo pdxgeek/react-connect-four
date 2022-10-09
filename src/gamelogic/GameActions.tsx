@@ -1,8 +1,7 @@
 import Player from "./Player";
 import { GamePiece } from "./GamePiece";
-import { IAppState } from "../context/AppContext";
+import { IAppState } from "../context/AppContextProvider";
 import WinDetection from "./WinDetection";
-import { lastIndexOf } from "lodash";
 
 export interface IGameActions {
     dropPiece: (column: number, gamePiece: GamePiece) => boolean;
@@ -19,16 +18,11 @@ const GameActions = (context: IAppState): IGameActions => {
         return appState.players[(appState.turn - 1) % appState.players.length]
     }
 
-    const isOutOfBounds = (columnIndex: number) => {
-        return columnIndex < 0 || columnIndex >= appState.columnCount;
-    }
-
     const setPiece = (rowIndex: number, columnIndex: number, gamePiece: GamePiece) => {
         console.log("placing " + gamePiece.substring(gamePiece.lastIndexOf("-") + 1) + " at " + rowIndex + "-" + columnIndex);
         appState.gameBoard[rowIndex][columnIndex] = gamePiece;
         context.setAppState({ ...appState, gameBoard: appState.gameBoard });
     }
-
 
     const gameOver = () => {
         context.setAppState({ ...appState, gameOver: true })
@@ -58,8 +52,6 @@ const GameActions = (context: IAppState): IGameActions => {
         let placed = false;
         if (appState.gameOver) {
             console.log("Error. Game is over. " + column)
-        } else if (isOutOfBounds(column)) {
-            console.log("Error.  ColumnIndex is out of bounds: " + column)
         } else {
             for (let i = 0; i < appState.rowCount; i++) {
                 const currentRow = appState.gameBoard[i]!;
