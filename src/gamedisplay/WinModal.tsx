@@ -36,16 +36,15 @@ const WinModal: React.FC = () => {
     ]
 
     return (
-        <Modal key='WinModal' show={modalState.winModal}>
+        <Modal key='WinModal' show={modalState.winModal} onClose={() => closeModal()}>
             <Modal.Body>
-
                 <div>
                     <div className='pb-5'>
-                        <span className='text-3xl text-base text-gray-400'>{ gameActions.currentPlayer().name + " wins!"}</span>
+                        <div className='text-3xl font-semibold text-blue-300'>{ gameActions.currentPlayer().name + " wins!"}</div>
                     </div>
                     <div className="space-y-6 ">
                     <span className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {getRandomString(winModalText)}
+                        {`Oh wow it looks like ${gameActions.currentPlayer().name} has won this one.`}
                     </span>
                     </div>
 
