@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Modal } from "flowbite-react";
-import { useAppContext } from "../context/AppContextProvider";
 import GameActions from "../gamelogic/GameActions";
 import { useModalContext } from "../context/ModalContextProvider";
 
@@ -8,8 +7,12 @@ const WinModal: React.FC = () => {
     const gameActions = GameActions()
     const { modalState, setModalState } = useModalContext();
 
+    const closeModal = () => {
+        setModalState({...modalState, winModal:false});
+    }
+
     return (
-        <Modal key='WinModal' show={modalState.winModal}>
+        <Modal key='WinModal' show={modalState.winModal} onClose={() => closeModal()}>
             <Modal.Header>
                 { gameActions.currentPlayer().name + " wins!"}
             </Modal.Header>
@@ -21,9 +24,9 @@ const WinModal: React.FC = () => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={() => { setModalState({...modalState, winModal:false}) }}>
-                    Ok
-                </Button>
+                    <Button onClick={() => { closeModal() }}>
+                        Ok
+                    </Button>
             </Modal.Footer>
         </Modal>
     )
