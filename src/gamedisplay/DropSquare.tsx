@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppContext } from "../context/AppContextProvider";
-import gameActions from "../gamelogic/GameActions";
+import GameActions from "../gamelogic/GameActions";
 
 interface IDropSquareProps {
     index: number;
@@ -9,7 +9,7 @@ interface IDropSquareProps {
 const DropSquare: React.FC<IDropSquareProps> = ({ index }) => {
     const context = useAppContext();
     const { appState } = context;
-    const { dropPiece, currentPlayer } = gameActions(context);
+    const { dropPiece, currentPlayer } = GameActions();
     const click = new Audio("click-1.mp3");
 
     const doClickSound = () => {

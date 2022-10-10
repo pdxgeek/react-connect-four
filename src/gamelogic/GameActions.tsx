@@ -1,7 +1,8 @@
 import Player from "./Player";
 import { GamePiece } from "./GamePiece";
-import { IAppState } from "../context/AppContextProvider";
+import { IAppState, useAppContext } from "../context/AppContextProvider";
 import WinDetection from "./WinDetection";
+import { useModalContext } from "../context/ModalContextProvider";
 
 export interface IGameActions {
     dropPiece: (column: number, gamePiece: GamePiece) => boolean;
@@ -10,10 +11,11 @@ export interface IGameActions {
     toggleSound: () => void;
 }
 
-const GameActions = (context: IAppState): IGameActions => {
-    const appState = context.appState;
-    const { checkWinFrom } = WinDetection(context.appState);
-
+const GameActions = (): IGameActions => {
+    // const appState = context.appState;
+    const { appState, setAppState } = useAppContext();
+    const { checkWinFrom } = WinDetection(appState);
+    const { modalState, setModalState } = useModalContext();
     const currentPlayer = (): Player => {
         return appState.players[(appState.turn - 1) % appState.players.length]
     }
@@ -21,28 +23,29 @@ const GameActions = (context: IAppState): IGameActions => {
     const setPiece = (rowIndex: number, columnIndex: number, gamePiece: GamePiece) => {
         console.log("placing " + gamePiece.substring(gamePiece.lastIndexOf("-") + 1) + " at " + rowIndex + "-" + columnIndex);
         appState.gameBoard[rowIndex][columnIndex] = gamePiece;
-        context.setAppState({ ...appState, gameBoard: appState.gameBoard });
+        setAppState({ ...appState, gameBoard: appState.gameBoard });
     }
 
     const gameOver = () => {
-        context.setAppState({ ...appState, gameOver: true })
+        setAppState({ ...appState, gameOver: true })
     }
 
     const advanceTurn = () => {
-        context.setAppState({ ...appState, turn: appState.turn + 1 });
+        setAppState({ ...appState, turn: appState.turn + 1 });
     }
 
     const toggleDebug = () => {
-        context.setAppState({ ...appState, debug: !appState.debug })
+        setAppState({ ...appState, debug: !appState.debug })
     }
 
     const toggleSound = () => {
-        context.setAppState({ ...appState, sound: !appState.sound })
+        setAppState({ ...appState, sound: !appState.sound })
     }
 
     const afterPlaced = (rowIndex: number, columnIndex: number) => {
         if (checkWinFrom(rowIndex, columnIndex).win) {
             gameOver();
+            setModalState({...modalState, winModal: true })
         }  else {
             advanceTurn();
         }

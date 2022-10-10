@@ -1,10 +1,11 @@
 import React from "react";
 import DropZone from "../gamedisplay/DropZone";
 import GameBoard from "../gamedisplay/GameBoard";
+import WinModal from "../gamedisplay/WinModal";
 
 const MainWindow: React.FC = () => {
     return (
-        <div className='flex flex-row h-screen'>
+        <div className='flex flex-row'>
 
             <div className='xs:w-0 lg:w-1/6 xl:w-3/12 '/>
 
@@ -16,6 +17,7 @@ const MainWindow: React.FC = () => {
 
                     <div className='pt-2'>
                         <GameBoard key="gameboard"/>
+                        <WinModal />
                     </div>
                 </div>
             </div>

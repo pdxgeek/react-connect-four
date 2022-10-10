@@ -1,9 +1,6 @@
 import { GamePiece } from "./GamePiece";
 import { IAppStateProps } from "../context/AppDefaultState";
-
-export interface IWinDetection {
-    checkWinFrom: (rowIndex: number, columnIndex: number) => IWinStatus;
-}
+import Player from "./Player";
 
 export interface IWinStatus {
     win: boolean
@@ -95,7 +92,7 @@ const WinDetection = (appState: IAppStateProps) => {
             if (appState.debug) { console.log("checking [" + next.negative.r + " | " + next.negative.c + "]"); }
 
             if (negative && (checkPiece(next.negative, color))) {
-                    pieces.push(next.negative)
+                pieces.push(next.negative)
             } else {
                 negative = false;
             }

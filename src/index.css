@@ -21,7 +21,7 @@
     }
 
     .gamepiece-yellow {
-        @apply bg-gradient-radial from-yellow-800 via-yellow-800 to-black
+        @apply bg-gradient-radial from-yellow-600 via-yellow-600 to-black
     }
 
     .gamepiece-blue {

@@ -5,7 +5,7 @@ import GameActions from "../gamelogic/GameActions";
 
 const TopBar: React.FC = () => {
     const { appState } = useAppContext();
-    const { currentPlayer, toggleDebug, toggleSound } = GameActions(useAppContext());
+    const { currentPlayer, toggleDebug, toggleSound } = GameActions();
 
     return (
         <div className='w-full static bottom-0'>

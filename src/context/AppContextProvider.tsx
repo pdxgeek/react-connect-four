@@ -6,7 +6,7 @@ export interface IAppState {
     setAppState: React.Dispatch<React.SetStateAction<IAppStateProps>>;
 }
 
-interface IContextProvider {
+export interface IContextProvider {
     children: React.ReactNode;
 }
 
