@@ -1,7 +1,7 @@
 import React from "react";
 import TopBar from "./TopBar";
 import MainWindow from "./MainWindow";
-import Banner from "./Banner";
+import TopNav from "./TopNav";
 import AppFooter from "./AppFooter";
 
 const ApplicationWrapper: React.FC = () => {
@@ -9,7 +9,7 @@ const ApplicationWrapper: React.FC = () => {
         <div className='app-background-color'>
             <div className='flex flex-col h-full app-background-color'>
                 <div className='fixed top-0 w-full'>
-                    <Banner key="banner" heading='Connect&nbsp;4' subHeading='Another Stupid React Implementation' />
+                    <TopNav key="topNav" />
                     <TopBar key="appinfobar"/>
                 </div>
 

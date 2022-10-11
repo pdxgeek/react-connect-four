@@ -22,7 +22,6 @@ export const useModalContext = () => {
 
 const ModalContextProvider: React.FC<IContextProvider> = ({ children }) => {
     const [modalState, setModalState] = React.useState<IModalStateProps>({ winModal: false });
-
     const modalContextValue = { modalState, setModalState };
 
     return modalContextValue ? (
