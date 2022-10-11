@@ -12,8 +12,10 @@ const ApplicationWrapper: React.FC = () => {
                     <TopNav key="topNav" />
                     <TopBar key="appinfobar"/>
                 </div>
+                <div>
+                    <MainWindow/>
+                </div>
 
-                <MainWindow/>
                 <AppFooter />
             </div>
         </div>

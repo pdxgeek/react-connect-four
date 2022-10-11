@@ -8,7 +8,7 @@ const TopBar: React.FC = () => {
     const { currentPlayer, toggleDebug, toggleSound } = GameActions();
 
     return (
-        <div className='w-full static bottom-0'>
+
 
             <div className='flex flex-row bg-neutral-500 gap-5'>
                 <div>
@@ -20,7 +20,7 @@ const TopBar: React.FC = () => {
                     <span>{ appState.gameOver ? "true" : "false" }</span>
                 </div>
             </div>
-        </div>
+
     )
 };
 

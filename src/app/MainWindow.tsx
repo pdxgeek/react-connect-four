@@ -2,6 +2,7 @@ import React from "react";
 import DropZone from "../gamedisplay/DropZone";
 import GameBoard from "../gamedisplay/GameBoard";
 import WinModal from "../gamedisplay/WinModal";
+import JackHandyCard from "../deepthoughts/JackHandyCard";
 
 const MainWindow: React.FC = () => {
     return (
@@ -22,7 +23,11 @@ const MainWindow: React.FC = () => {
                 </div>
             </div>
 
-            <div className='xs:w-0 lg:w-1/6 xl:w-3/12'/>
+            <div className='xs:w-0 lg:w-1/6 xl:w-3/12'>
+                    <div className='flex grow h-full w-full align-middle place-items-center'>
+                        <JackHandyCard />
+                    </div>
+            </div>
         </div>
 
     );
