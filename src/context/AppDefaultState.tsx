@@ -4,6 +4,7 @@ import uuid from "react-uuid";
 
 const _rows = 6;
 const _columns = 7;
+const _winTarget = 4;
 const _players = [
     new Player("Player One", GamePiece.red),
     new Player("Player Two", GamePiece.black),
@@ -14,9 +15,9 @@ const _players = [
 export interface IAppStateProps {
     rowCount: number;
     columnCount: number;
+    winTarget: number;
     players: Player[];
     winningPlayer: Player | undefined;
-    winTarget: number;
     turn: number;
     gameOver: boolean;
     gameId: string;
@@ -29,9 +30,9 @@ export const AppDefaultState: IAppStateProps = {
     rowCount: _rows,
     columnCount: _columns,
     players: _players,
+    winTarget: _winTarget,
     winningPlayer: undefined,
     gameId: uuid(),
-    winTarget: 4,
     turn: 1,
     gameOver: false,
     sound: true,
