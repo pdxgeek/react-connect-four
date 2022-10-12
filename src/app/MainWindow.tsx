@@ -23,11 +23,7 @@ const MainWindow: React.FC = () => {
                 </div>
             </div>
 
-            <div className='xs:w-0 lg:w-1/6 xl:w-3/12'>
-                    <div className='flex grow h-full w-full align-middle place-items-center'>
-                        <JackHandyCard />
-                    </div>
-            </div>
+            <div className='xs:w-0 lg:w-1/6 xl:w-3/12' />
         </div>
 
     );

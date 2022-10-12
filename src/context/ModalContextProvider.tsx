@@ -3,6 +3,7 @@ import { IContextProvider } from "./AppContextProvider";
 
 export interface IModalStateProps {
     winModal: boolean
+    deepThoughtsModal: boolean
 }
 
 interface IModalState {
@@ -10,9 +11,13 @@ interface IModalState {
     setModalState: React.Dispatch<React.SetStateAction<IModalStateProps>>;
 }
 
+const defaultModalState: IModalStateProps = {
+    winModal: false,
+    deepThoughtsModal: false
+}
 
 const ModalContext = createContext<IModalState>({
-    modalState: { winModal: false },
+    modalState: defaultModalState,
     setModalState: (): void => {}
 });
 
@@ -21,7 +26,7 @@ export const useModalContext = () => {
 };
 
 const ModalContextProvider: React.FC<IContextProvider> = ({ children }) => {
-    const [modalState, setModalState] = React.useState<IModalStateProps>({ winModal: false });
+    const [modalState, setModalState] = React.useState<IModalStateProps>(defaultModalState);
     const modalContextValue = { modalState, setModalState };
 
     return modalContextValue ? (

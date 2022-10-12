@@ -44,7 +44,7 @@ const WinModal: React.FC = () => {
                     </div>
                     <div className="space-y-6 ">
                     <span className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        {`Oh wow it looks like ${gameActions.currentPlayer().name} has won this one.`}
+                        { getRandomString(winModalText) }
                     </span>
                     </div>
 

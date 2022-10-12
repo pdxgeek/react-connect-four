@@ -6,10 +6,16 @@ import soundOn from "../assets/sound-on.png"
 import soundOff from "../assets/sound-off.png"
 import { useAppContext } from "../context/AppContextProvider";
 import GameActions from "../gamelogic/GameActions";
+import ModalContextProvider, { useModalContext } from "../context/ModalContextProvider";
 
 const TopNav: React.FC = () => {
     const { appState } = useAppContext();
     const { toggleDebug, toggleSound } = GameActions();
+    const { modalState, setModalState } = useModalContext();
+
+    const showDeepThoughtsModal = () => {
+        setModalState({...modalState, deepThoughtsModal: true})
+    }
 
     return (
         <Navbar
@@ -27,7 +33,7 @@ const TopNav: React.FC = () => {
                 </span>
             </Navbar.Brand>
             <div className='flex flex-row gap-5'>
-                <img src='/images/thought_icon.png' className='h-6' alt='deepThoughts'/>
+                <img src='/images/thought_icon.png' className='h-6' alt='deepThoughts' onClick={ () => showDeepThoughtsModal() }/>
                 <img src={appState.debug ? bugBlue : bugWhite} className="h-6" alt="debugToggle" onClick={() => toggleDebug()}/>
                 <img src={appState.sound ? '/images/sound-on.png' : '/images/sound-off.png'} className="h-6" alt="soundToggle" onClick={() => toggleSound()}/>
             </div>

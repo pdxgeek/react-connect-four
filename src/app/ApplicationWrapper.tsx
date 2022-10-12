@@ -2,6 +2,7 @@ import React from "react";
 import MainWindow from "./MainWindow";
 import TopNav from "./TopNav";
 import AppFooter from "./AppFooter";
+import DeepThoughtsModal from "../deepthoughts/DeepThoughtsModal";
 
 const ApplicationWrapper: React.FC = () => {
     return (
@@ -12,6 +13,7 @@ const ApplicationWrapper: React.FC = () => {
                 </div>
                 <div>
                     <MainWindow/>
+                    <DeepThoughtsModal />
                 </div>
 
                 <AppFooter />
