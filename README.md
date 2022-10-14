@@ -13,6 +13,8 @@ This is a project that I used to learn React and related libraries.  After some 
 
 It is important to me to code in such a way that is easy to read, and easy to modify.  This implementation of connect-four will take more than two players, and allow the creation of gameboards with variable rows and columns. 
 
+In addition, I wanted to create a version of this that was closer to the game I remember playing as a kid, thus I use images for the gamepieces, and I include drop sounds.
+
 ## Available Scripts
 
 In the project directory, you can run:
