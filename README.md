@@ -1,6 +1,17 @@
+![screenshot](public/images/react-connect-four-screenshot.png)
+
 # React Connect Four
 by David Lerner (pdxgeek / gonzobeans.com)
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This is a project that I used to learn React and related libraries.  After some research I decided that the packages I wanted to focus on were:
+
+* React
+* Typescript
+* Tailwind
+* Flowbite-React
+* Create-React-App
+
+It is important to me to code in such a way that is easy to read, and easy to modify.  This implementation of connect-four will take more than two players, and allow the creation of gameboards with variable rows and columns. 
 
 ## Available Scripts
 
@@ -44,3 +55,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
