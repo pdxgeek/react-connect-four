@@ -1,12 +1,10 @@
 import { Navbar } from "flowbite-react";
 import React from "react";
-import bugWhite from "../assets/bug-white.png"
-import bugBlue from "../assets/bug-blue.png"
-import soundOn from "../assets/sound-on.png"
-import soundOff from "../assets/sound-off.png"
+import bugWhite from "../../public/images/bug-white.png"
+import bugBlue from "../../public/images/bug-blue.png"
 import { useAppContext } from "../context/AppContextProvider";
 import GameActions from "../gamelogic/GameActions";
-import ModalContextProvider, { useModalContext } from "../context/ModalContextProvider";
+import { useModalContext } from "../context/ModalContextProvider";
 
 const TopNav: React.FC = () => {
     const { appState } = useAppContext();
@@ -34,7 +32,7 @@ const TopNav: React.FC = () => {
             </Navbar.Brand>
             <div className='flex flex-row gap-5'>
                 <img src='/images/thought_icon.png' className='h-6' alt='deepThoughts' onClick={ () => showDeepThoughtsModal() }/>
-                <img src={appState.debug ? bugBlue : bugWhite} className="h-6" alt="debugToggle" onClick={() => toggleDebug()}/>
+                <img src={appState.debug ? '/images/bug-blue.png' : '/images/bug-white.png'} className="h-6" alt="debugToggle" onClick={() => toggleDebug()}/>
                 <img src={appState.sound ? '/images/sound-on.png' : '/images/sound-off.png'} className="h-6" alt="soundToggle" onClick={() => toggleSound()}/>
             </div>
         </Navbar>

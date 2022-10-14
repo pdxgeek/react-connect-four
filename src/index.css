@@ -8,23 +8,23 @@
         @apply bg-blue-600
     }
 
-    .gamepiece-red {
+    .piece-red {
         @apply bg-gradient-radial from-red-800 via-red-800 to-black
     }
 
-    .gamepiece-black {
+    .piece-black {
         @apply bg-gradient-radial from-neutral-700 via-neutral-700 to-black
     }
 
-    .gamepiece-green {
+    .piece-green {
         @apply bg-gradient-radial from-green-800 via-green-800 to-black
     }
 
-    .gamepiece-yellow {
+    .piece-yellow {
         @apply bg-gradient-radial from-yellow-600 via-yellow-600 to-black
     }
 
-    .gamepiece-blue {
+    .piece-blue {
         @apply bg-gradient-radial from-blue-800 via-blue-800 to-black
     }
 

@@ -10,6 +10,7 @@ const _players = [
     new Player("Player Two", GamePiece.black),
     // new Player("player3", GamePiece.yellow),
     // new Player("player4", GamePiece.blue),
+    // new Player("player5", GamePiece.purple),
 ];
 
 export interface IAppStateProps {
