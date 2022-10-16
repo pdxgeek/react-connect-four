@@ -1,6 +1,5 @@
 import { GamePiece } from "./GamePiece";
 import { IAppStateProps } from "../context/AppDefaultState";
-import Player from "./Player";
 
 export interface IWinStatus {
     win: boolean
@@ -31,45 +30,53 @@ const WinDetection = (appState: IAppStateProps) => {
             console.log("Error: Attempting to check for win on an empty space.")
         }
 
-        const checks: IWinStatus[] = [
+        const winChecks: IWinStatus[] = [
             check(upDown, rowIndex, columnIndex, piece),
             check(rightLeft, rowIndex, columnIndex, piece),
             check(diagonalUp, rowIndex, columnIndex, piece),
             check(diagonalDown, rowIndex, columnIndex, piece)
         ]
 
-        for (const condition of checks) {
-            if (condition.win) {
-                console.log("Game Over! " + condition.color + " wins")
-                return condition;
+        for (const winStatus of winChecks) {
+            if (winStatus.win) {
+                console.log("Game Over! " + winStatus.color + " wins")
+                return winStatus;
             }
         }
         return { win: false, pieces: [] }
     }
 
     const upDown: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        if (appState.debug) { console.log("checking up-down") }
+        if (appState.debug) {
+            console.log("checking up-down")
+        }
         const positive = { r: (rowIndex + counter), c: columnIndex }
         const negative = { r: (rowIndex - counter), c: columnIndex }
         return { positive, negative }
     }
 
     const rightLeft: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        if (appState.debug) { console.log("checking right-left") }
+        if (appState.debug) {
+            console.log("checking right-left")
+        }
         const positive = { r: rowIndex, c: (columnIndex + counter) }
         const negative = { r: rowIndex, c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const diagonalUp: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        if (appState.debug) { console.log("checking diagonal-up") }
+        if (appState.debug) {
+            console.log("checking diagonal-up")
+        }
         const positive = { r: (rowIndex + counter), c: (columnIndex + counter) }
         const negative = { r: (rowIndex - counter), c: (columnIndex - counter) }
         return { positive, negative }
     }
 
     const diagonalDown: CheckFunction = (rowIndex: number, columnIndex: number, counter: number) => {
-        if (appState.debug) { console.log("checking diagonal-down") }
+        if (appState.debug) {
+            console.log("checking diagonal-down")
+        }
         const positive = { r: (rowIndex - counter), c: (columnIndex + counter) }
         const negative = { r: (rowIndex + counter), c: (columnIndex - counter) }
         return { positive, negative }
@@ -78,18 +85,22 @@ const WinDetection = (appState: IAppStateProps) => {
     const check = (checker: CheckFunction, rowIndex: number, columnIndex: number, color: GamePiece) => {
         let { positive, negative, counter } = { positive: true, negative: true, counter: 0 }
         const pieces: ICoordinates[] = [{ r: rowIndex, c: columnIndex }]
-        while(positive || negative) {
+        while (positive || negative) {
             counter++;
             const next = checker(rowIndex, columnIndex, counter);
 
-            if (appState.debug) { console.log("checking [" + next.positive.r + " | " + next.positive.c + "]"); }
+            if (appState.debug) {
+                console.log("checking [" + next.positive.r + " | " + next.positive.c + "]");
+            }
 
             if (positive && (checkPiece(next.positive, color))) {
                 pieces.push(next.positive)
-                } else {
+            } else {
                 positive = false;
             }
-            if (appState.debug) { console.log("checking [" + next.negative.r + " | " + next.negative.c + "]"); }
+            if (appState.debug) {
+                console.log("checking [" + next.negative.r + " | " + next.negative.c + "]");
+            }
 
             if (negative && (checkPiece(next.negative, color))) {
                 pieces.push(next.negative)

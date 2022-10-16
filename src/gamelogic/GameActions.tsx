@@ -1,6 +1,6 @@
 import Player from "./Player";
 import { GamePiece } from "./GamePiece";
-import { IAppState, useAppContext } from "../context/AppContextProvider";
+import { useAppContext } from "../context/AppContextProvider";
 import WinDetection from "./WinDetection";
 import { useModalContext } from "../context/ModalContextProvider";
 
@@ -45,8 +45,8 @@ const GameActions = (): IGameActions => {
     const afterPlaced = (rowIndex: number, columnIndex: number) => {
         if (checkWinFrom(rowIndex, columnIndex).win) {
             gameOver();
-            setModalState({...modalState, winModal: true })
-        }  else {
+            setModalState({ ...modalState, winModal: true })
+        } else {
             advanceTurn();
         }
     }

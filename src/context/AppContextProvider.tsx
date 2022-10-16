@@ -30,8 +30,8 @@ const AppContextProvider: React.FC<IContextProvider> = ({ children }) => {
 
     return appContextValue ? (
         <>
-            <AppContext.Provider value={appContextValue}>
-                {children}
+            <AppContext.Provider value={ appContextValue }>
+                { children }
             </AppContext.Provider>
         </>
     ) : null;

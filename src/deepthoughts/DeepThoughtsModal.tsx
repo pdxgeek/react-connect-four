@@ -7,19 +7,21 @@ const DeepThoughtsModal: React.FC = () => {
     const { modalState, setModalState } = useModalContext();
 
     const closeModal = () => {
-        setModalState({ ...modalState, deepThoughtsModal:false });
+        setModalState({ ...modalState, deepThoughtsModal: false });
     }
 
     return (
-        <Modal key='WinModal' show={modalState.deepThoughtsModal} onClose={() => closeModal()}>
+        <Modal key='WinModal' show={ modalState.deepThoughtsModal } onClose={ () => closeModal() }>
             <Modal.Body>
                 <div className='flex flex-col grow w-full'>
                     <div className='pb-5 place-self-center'>
-                        <JackHandyCard />
+                        <JackHandyCard/>
                     </div>
 
                     <div className='flex grow w-full place-content-end'>
-                        <Button onClick={() => { closeModal() }}>
+                        <Button onClick={ () => {
+                            closeModal()
+                        } }>
                             Close
                         </Button>
                     </div>

@@ -18,7 +18,8 @@ const defaultModalState: IModalStateProps = {
 
 const ModalContext = createContext<IModalState>({
     modalState: defaultModalState,
-    setModalState: (): void => {}
+    setModalState: (): void => {
+    }
 });
 
 export const useModalContext = () => {
@@ -31,8 +32,8 @@ const ModalContextProvider: React.FC<IContextProvider> = ({ children }) => {
 
     return modalContextValue ? (
         <>
-            <ModalContext.Provider value={modalContextValue}>
-                {children}
+            <ModalContext.Provider value={ modalContextValue }>
+                { children }
             </ModalContext.Provider>
         </>
     ) : null;

@@ -9,14 +9,14 @@ const ApplicationWrapper: React.FC = () => {
         <div className='app-background-color'>
             <div className='flex flex-col h-full app-background-color'>
                 <div className='fixed top-0 w-full'>
-                    <TopNav key="topNav" />
+                    <TopNav key="topNav"/>
                 </div>
                 <div>
                     <MainWindow/>
-                    <DeepThoughtsModal />
+                    <DeepThoughtsModal/>
                 </div>
 
-                <AppFooter />
+                <AppFooter/>
             </div>
         </div>
     )

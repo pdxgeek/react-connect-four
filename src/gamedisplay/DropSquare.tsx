@@ -21,13 +21,14 @@ const DropSquare: React.FC<IDropSquareProps> = ({ index }) => {
 
     return (
         <button className='relative group aspect-square grow m-[1px]'
-             onClick={ () => {
-                 if (dropPiece(index, currentPlayer().color)) {
-                     doClickSound();
-                 }
-             }}>
+                onClick={ () => {
+                    if (dropPiece(index, currentPlayer().color)) {
+                        doClickSound();
+                    }
+                } }>
             { !appState.gameOver
-                ?  <img alt='' className='object-fit invisible group-hover:visible' src={'/images/' + currentPlayer().color + '.png'} />
+                ? <img alt='' className='object-fit invisible group-hover:visible'
+                       src={ '/images/' + currentPlayer().color + '.png' }/>
                 : <div/>
             }
         </button>

@@ -20,7 +20,7 @@ const RowSpace: React.FC<IRowSpaceProps> = ({ rowIndex, columnIndex }) => {
     return (
         <div className='aspect-square m-[1px] p-[1%] grow bg-amber-300 rounded-md w-20'>
             <div className={ 'relative h-full rounded-full ' + gamePiece }>
-                <img alt='' className='object-fit' src={image} />
+                <img alt='' className='object-fit' src={ image }/>
                 <div className='absolute top-0 left-0 flex w-full place-content-center'>
                     { appState.debug ? <RowLabel key={ "rl-" + content } value={ content }/> : <div/> }
                 </div>

@@ -1,9 +1,8 @@
-
-const getRandomInt = (max: number) =>  {
+const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * max);
 }
 
-export const getRandomImage = (images: any[] ) => {
+export const getRandomImage = (images: any[]) => {
     return images[getRandomInt(images.length)]
 }
 

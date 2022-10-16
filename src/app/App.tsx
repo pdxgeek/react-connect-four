@@ -8,7 +8,7 @@ const App: React.FC = () => {
         <div className='flex flex-col h-screen app-background-color'>
             <AppContextProvider>
                 <ModalContextProvider>
-                    <ApplicationWrapper />
+                    <ApplicationWrapper/>
                 </ModalContextProvider>
             </AppContextProvider>
         </div>

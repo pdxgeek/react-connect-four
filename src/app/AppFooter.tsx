@@ -8,12 +8,12 @@ const AppFooter: React.FC = () => {
 
     return (
         <div className='fixed bottom-0 grow w-full bg-gray-800'>
-            <Footer container={true}>
+            <Footer container={ true }>
                 <div className='flex flex-row grow w-full gap-10'>
                     <Footer.Copyright
                         href="#"
                         by="Gonzobeans.com"
-                        year={2022}
+                        year={ 2022 }
                     />
 
                 </div>
@@ -21,17 +21,17 @@ const AppFooter: React.FC = () => {
                     <span className='font-semibold'>CurrentPlayer: </span>
                     <span>{ currentPlayer().name }</span>
                 </div>
-                <DebugFooter />
+                <DebugFooter/>
             </Footer>
         </div>
-
     )
-
 }
 
 const DebugFooter: React.FC = () => {
     const { appState } = useAppContext();
-    if (!appState.debug) { return <div/>}
+    if (!appState.debug) {
+        return <div/>
+    }
     return (
         <>
             <div className='text-base text-sm place-content-end text-gray-400 whitespace-nowrap pr-5'>
